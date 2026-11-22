@@ -136,7 +136,7 @@
     display: flex;
     align-items: center;
     gap: 11px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   .app-icon {
     width: 44px;
@@ -172,6 +172,19 @@
     font-size: 11.5px;
     line-height: 1.45;
     margin-top: 3px;
+  }
+  .features-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  .feat-pill {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
   }
   .dl-glass-btn {
     display: block;
@@ -256,6 +269,8 @@ var APPS = [
     nameEn: "Pro Sensi DPI",
     descAr: "حاسبة الحساسية وإعدادات الـ DPI ونصائح الهيدشوت لأكثر من 100 هاتف.",
     descEn: "Sensitivity & DPI calculator with headshot tips for 100+ devices.",
+    featuresAr: ["⚡ قيم DPI دقيقة", "🎯 نصائح هيدشوت", "📱 +100 نوع هاتف"],
+    featuresEn: ["⚡ Accurate DPI values", "🎯 Headshot tips", "📱 100+ phones"],
     tagAr: "V3.0 • APK",
     tagEn: "V3.0 • APK",
     link: "https://www.mediafire.com/file/8hiafjb8w2s1ork/Pro_Sensi_DPI.apk/file"
@@ -267,6 +282,8 @@ var APPS = [
     nameEn: "Arab & World News - Breaking",
     descAr: "متابعة مستمرة وسريعة لأهم الأخبار العربية والعالمية العاجلة لحظة بلحظة.",
     descEn: "Fast and organized breaking Arab and world news updates.",
+    featuresAr: ["📰 عاجل لحظة بلحظة", "🌍 أخبار عربية وعالمية", "⚡ تصفح سريع وخفيف"],
+    featuresEn: ["📰 Live breaking news", "🌍 Arab & world coverage", "⚡ Fast & lightweight"],
     tagAr: "Google Play",
     tagEn: "Google Play",
     link: "https://play.google.com/store/apps/details?id=com.news.maroc.nabd.app"
@@ -278,6 +295,8 @@ var APPS = [
     nameEn: "Learn Spanish",
     descAr: "تعلّم أساسيات اللغة الإسبانية والعبارات اليومية بأسلوب بسيط ومباشر.",
     descEn: "Learn Spanish essentials and everyday phrases simply.",
+    featuresAr: ["🗣️ عبارات يومية", "📚 أساسيات مبسطة", "✨ مناسب للمبتدئين"],
+    featuresEn: ["🗣️ Daily phrases", "📚 Core basics", "✨ Beginner friendly"],
     tagAr: "V1.0 • APK",
     tagEn: "V1.0 • APK",
     link: "https://www.mediafire.com/file/sbc8x33dewsnog4/%25D8%25AA%25D8%25B9%25D9%2584%25D9%2585_%25D8%25A7%25D9%2584%25D9%2584%25D8%25BA%25D8%25A9_%25D8%25A7%25D9%2584%25D8%25A5%25D8%25B3%25D8%25A8%25D8%25A7%25D9%2586%25D9%258A%25D8%25A9.apk/file"
@@ -299,6 +318,7 @@ function renderPage() {
   var glassSurface = isLight
     ? "linear-gradient(145deg, rgba(255,255,255,0.78), rgba(255,255,255,0.48))"
     : "linear-gradient(145deg, rgba(255,255,255,0.11), rgba(255,255,255,0.03))";
+  var pillBg = isLight ? "rgba(15, 23, 42, 0.05)" : "rgba(255, 255, 255, 0.05)";
   var borderCol = isLight ? "rgba(15, 23, 42, 0.12)" : "rgba(255, 255, 255, 0.14)";
   var textCol = isLight ? "#0f172a" : "#f8fafc";
   var mutedCol = isLight ? "#475569" : "#94a3b8";
@@ -351,11 +371,18 @@ function renderPage() {
     var name = isEn ? a.nameEn : a.nameAr;
     var desc = isEn ? a.descEn : a.descAr;
     var tag = isEn ? a.tagEn : a.tagAr;
+    var feats = isEn ? a.featuresEn : a.featuresAr;
     var btnLabel = isEn ? "Download ⬇️" : "تحميل التطبيق ⬇️";
     var btnBg = isLight
       ? "linear-gradient(135deg, " + a.accent + "d9, " + a.accent + "99)"
       : "linear-gradient(135deg, " + a.accent + "45, " + a.accent + "1f)";
     var btnText = isLight ? "#041019" : "#ffffff";
+
+    var featsHtml = '<div class="features-box">';
+    for (var f = 0; f < feats.length; f++) {
+      featsHtml += '<span class="feat-pill" style="background:' + pillBg + ';color:' + textCol + ';">' + feats[f] + '</span>';
+    }
+    featsHtml += '</div>';
 
     cardsHtml +=
       '<article class="app-card lux-glass" style="background:' + glassSurface + ';border-color:' + borderCol + ';">' +
@@ -369,6 +396,7 @@ function renderPage() {
             '<div class="app-desc" style="color:' + mutedCol + ';">' + desc + '</div>' +
           '</div>' +
         '</div>' +
+        featsHtml +
         '<a class="dl-glass-btn" href="' + a.link + '" target="_blank" rel="noopener noreferrer" style="background:' + btnBg + ';color:' + btnText + ';border:1px solid ' + a.accent + '88;">' + btnLabel + '</a>' +
       '</article>';
   }
