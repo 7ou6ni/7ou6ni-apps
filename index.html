@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar" style="background:#05070c;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="الموقع الرسمي لتحميل تطبيقات 7ou6ni للأندرويد برابط مباشر وآمن.">
+<title>7ou6ni Apps - متجر وتطبيقات 7ou6ni</title>
+<style>
+  html, body {
+    background-color: #05070c;
+    color: #ffffff;
+    margin: 0;
+  }
+  body, button, input, a {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  }
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 14px 14px 40px 14px;
+  }
+</style>
+</head>
+<body id="B" style="background:#05070c;color:#ffffff;margin:0;direction:rtl;">
+
+<div class="wrap">
+  <div id="hdr" style="background:linear-gradient(90deg,#151b2c,#0d111d);border:1px solid #26314d;border-radius:18px;padding:13px 15px;display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span id="siteTitle" style="font-size:17px;font-weight:900;color:#fff;">7OU6NI APPS</span>
+        <span style="background:#00e5ff;color:#05070c;font-size:9.5px;font-weight:900;padding:2px 8px;border-radius:6px;">OFFICIAL</span>
+      </div>
+      <div id="siteSub" style="font-size:11.5px;color:#8fa1bf;margin-top:2px;">الموقع الرسمي لتحميل تطبيقات الأندرويد</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+      <button id="thBtn" onclick="toggleTheme()" style="background:#111726;color:#ffbe0b;border:1px solid #26314d;width:36px;height:34px;border-radius:10px;font-size:15px;cursor:pointer;">☀️</button>
+      <button id="lb" onclick="tl()" style="background:#00e5ff;color:#05070c;border:none;padding:7px 12px;border-radius:10px;font-weight:900;font-size:12px;cursor:pointer;">EN 🌐</button>
+    </div>
+  </div>
+
+  <div id="hero" style="background:#0e1320;border:1px solid #222d47;border-radius:18px;padding:15px;margin-bottom:14px;text-align:center;">
+    <div id="heroTitle" style="font-size:16px;font-weight:900;color:#00e5ff;margin-bottom:5px;">حمّل تطبيقاتنا مباشرة على هاتفك</div>
+    <p id="heroDesc" style="font-size:12.5px;color:#cbd5e1;line-height:1.6;margin:0;">اختر التطبيق الذي تريده من القائمة أدناه واضغط على زر التحميل المباشر بصيغة APK.</p>
+  </div>
+
+  <div id="appsList"></div>
+
+  <div id="guideCard" style="background:#0e1320;border:1px solid #222d47;border-radius:18px;padding:14px;margin-top:14px;">
+    <b id="guideTitle" style="color:#ffbe0b;font-size:14px;display:block;margin-bottom:7px;">📲 طريقة تثبيت التطبيق على أندرويد:</b>
+    <div id="guideText" style="font-size:12px;color:#cbd5e1;line-height:1.7;">
+      1. اضغط على زر <b>تحميل التطبيق</b> أسفل التطبيق المطلوب.<br>
+      2. بعد اكتمال التنزيل، افتح ملف <b>APK</b> من الإشعارات أو مدير الملفات.<br>
+      3. إذا ظهرت رسالة الحماية، فعّل خيار <b>السماح من هذا المصدر</b> ثم اضغط <b>تثبيت</b>.
+    </div>
+  </div>
+
+  <div id="ftr" style="text-align:center;margin-top:16px;font-size:11.5px;color:#8fa1bf;line-height:1.7;">
+    <div id="ftrTxt">تطوير: <b style="color:#00e5ff;">7ou6ni</b> • للتواصل: <span dir="ltr">7ou6ni@bk.ru</span></div>
+  </div>
+</div>
+
+<script>
+var en = 0, lt = 0;
+
+var APPS = [
+  {
+    icon: "🎯",
+    accent: "#00e5ff",
+    nameAr: "Pro Sensi DPI",
+    nameEn: "Pro Sensi DPI",
+    descAr: "حاسبة الحساسية وإعدادات الـ DPI ونصائح الهيدشوت لأكثر من 100 هاتف.",
+    descEn: "Sensitivity & DPI calculator with headshot tips for 100+ devices.",
+    ver: "V3.0",
+    size: "12 MB",
+    link: "#ضع-رابط-التطبيق-الاول-هنا"
+  },
+  {
+    icon: "📰",
+    accent: "#00ff88",
+    nameAr: "أخبار العرب والعالم",
+    nameEn: "Arab & World News",
+    descAr: "تطبيق لمتابعة آخر الأخبار العربية والعالمية بسرعة وتنظيم.",
+    descEn: "Follow the latest Arab and world news fast in one place.",
+    ver: "V1.0",
+    size: "15 MB",
+    link: "#ضع-رابط-التطبيق-الثاني-هنا"
+  },
+  {
+    icon: "🚀",
+    accent: "#c084fc",
+    nameAr: "التطبيق الثالث",
+    nameEn: "Third App",
+    descAr: "وصف قصير للتطبيق الثالث.",
+    descEn: "Short description for the third app.",
+    ver: "V1.0",
+    size: "10 MB",
+    link: "#ضع-رابط-التطبيق-الثالث-هنا"
+  }
+];
+
+function cBg(){ return lt ? "#ffffff" : "#0e1320"; }
+function cBd(){ return lt ? "#dbe2ee" : "#222d47"; }
+function cTx(){ return lt ? "#0f172a" : "#ffffff"; }
+function cSb(){ return lt ? "#475569" : "#8fa1bf"; }
+function cIn(){ return lt ? "#f1f5f9" : "#060911"; }
+
+function toggleTheme(){ lt = 1 - lt; render(); }
+function tl(){ en = 1 - en; render(); }
+
+function render(){
+  var bg = lt ? "#f1f5f9" : "#05070c";
+  document.documentElement.style.backgroundColor = bg;
+  document.getElementById("B").style.background = bg;
+  document.getElementById("B").style.color = cTx();
+  document.getElementById("B").style.direction = en ? "ltr" : "rtl";
+
+  document.getElementById("hdr").style.background = lt ? "#ffffff" : "linear-gradient(90deg,#151b2c,#0d111d)";
+  document.getElementById("hdr").style.borderColor = cBd();
+  document.getElementById("siteTitle").style.color = cTx();
+  document.getElementById("siteSub").style.color = cSb();
+  document.getElementById("siteSub").innerText = en ? "Official Android Apps Download Hub" : "الموقع الرسمي لتحميل تطبيقات الأندرويد";
+  document.getElementById("thBtn").innerText = lt ? "🌙" : "☀️";
+  document.getElementById("lb").innerText = en ? "AR 🌐" : "EN 🌐";
+
+  document.getElementById("hero").style.background = cBg();
+  document.getElementById("hero").style.borderColor = cBd();
+  document.getElementById("heroTitle").style.color = lt ? "#0284c7" : "#00e5ff";
+  document.getElementById("heroTitle").innerText = en ? "Download Our Apps Directly" : "حمّل تطبيقاتنا مباشرة على هاتفك";
+  document.getElementById("heroDesc").style.color = cTx();
+  document.getElementById("heroDesc").innerText = en
+    ? "Choose an app from the list below and tap the direct APK download button."
+    : "اختر التطبيق الذي تريده من القائمة أدناه واضغط على زر التحميل المباشر بصيغة APK.";
+
+  var html = "";
+  for(var i=0; i<APPS.length; i++){
+    var app = APPS[i];
+    var nm = en ? app.nameEn : app.nameAr;
+    var ds = en ? app.descEn : app.descAr;
+    var btnTxt = en ? "Download APK ⬇️" : "تحميل التطبيق ⬇️";
+    html +=
+      '<div style="background:'+cBg()+';border:1px solid '+cBd()+';border-radius:18px;padding:14px;margin-bottom:11px;">' +
+        '<div style="display:flex;align-items:center;gap:12px;margin-bottom:9px;">' +
+          '<div style="width:50px;height:50px;border-radius:14px;background:'+app.accent+'18;border:1px solid '+app.accent+'66;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;">'+app.icon+'</div>' +
+          '<div style="flex:1;">' +
+            '<div style="display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:wrap;">' +
+              '<b style="font-size:15.5px;color:'+cTx()+';">'+nm+'</b>' +
+              '<span style="background:'+cIn()+';border:1px solid '+cBd()+';color:'+app.accent+';font-size:10.5px;font-weight:900;padding:2px 8px;border-radius:999px;">'+app.ver+' • '+app.size+'</span>' +
+            '</div>' +
+            '<div style="font-size:12px;color:'+cSb()+';line-height:1.5;margin-top:4px;">'+ds+'</div>' +
+          '</div>' +
+        '</div>' +
+        '<a href="'+app.link+'" target="_blank" rel="noopener noreferrer" style="display:block;text-align:center;background:'+app.accent+';color:#05070c;text-decoration:none;padding:10px 12px;border-radius:11px;font-weight:900;font-size:13px;">'+btnTxt+'</a>' +
+      '</div>';
+  }
+  document.getElementById("appsList").innerHTML = html;
+
+  document.getElementById("guideCard").style.background = cBg();
+  document.getElementById("guideCard").style.borderColor = cBd();
+  document.getElementById("guideTitle").style.color = lt ? "#d97706" : "#ffbe0b";
+  document.getElementById("guideTitle").innerText = en ? "📲 How to Install on Android:" : "📲 طريقة تثبيت التطبيق على أندرويد:";
+  document.getElementById("guideText").style.color = cTx();
+  document.getElementById("guideText").innerHTML = en
+    ? "1. Tap <b>Download APK</b> under the app you want.<br>2. Once downloaded, open the <b>APK</b> file from notifications or File Manager.<br>3. If prompted, allow <b>Install from this source</b> and tap <b>Install</b>."
+    : "1. اضغط على زر <b>تحميل التطبيق</b> أسفل التطبيق المطلوب.<br>2. بعد اكتمال التنزيل، افتح ملف <b>APK</b> من الإشعارات أو مدير الملفات.<br>3. إذا ظهرت رسالة الحماية، فعّل خيار <b>السماح من هذا المصدر</b> ثم اضغط <b>تثبيت</b>.";
+
+  document.getElementById("ftr").style.color = cSb();
+}
+
+render();
+</script>
+</body>
+</html>
