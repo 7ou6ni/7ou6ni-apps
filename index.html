@@ -199,6 +199,28 @@
     -webkit-backdrop-filter: blur(10px);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 6px 18px rgba(0, 0, 0, 0.25);
   }
+  .timer-box {
+    margin-top: 8px;
+    padding: 9px 11px;
+    border-radius: 12px;
+    font-size: 11.5px;
+    font-weight: 700;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+  }
+  .timer-badge {
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    background: rgba(56, 189, 248, 0.18);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    flex-shrink: 0;
+  }
   .guide {
     padding: 12px 14px;
     margin-top: 10px;
@@ -260,9 +282,11 @@
 <script>
 var isEn = false;
 var isLight = false;
+var countdownTimer = null;
 
 var APPS = [
   {
+    id: "sensi",
     img: "app_icon_512x512-1.png",
     accent: "#38bdf8",
     nameAr: "Pro Sensi DPI",
@@ -273,9 +297,11 @@ var APPS = [
     featuresEn: ["⚡ Accurate DPI values", "🎯 Headshot tips", "📱 100+ phones"],
     tagAr: "V3.0 • APK",
     tagEn: "V3.0 • APK",
-    link: "https://www.mediafire.com/file/8hiafjb8w2s1ork/Pro_Sensi_DPI.apk/file"
+    link: "https://srnky.com/FKaWGctqMD",
+    waitSeconds: 10
   },
   {
+    id: "news",
     img: "2463348_ico (1).png",
     accent: "#22c55e",
     nameAr: "أخبار العرب والعالم - عاجل",
@@ -286,9 +312,11 @@ var APPS = [
     featuresEn: ["📰 Live breaking news", "🌍 Arab & world coverage", "⚡ Fast & lightweight"],
     tagAr: "Google Play",
     tagEn: "Google Play",
-    link: "https://play.google.com/store/apps/details?id=com.news.maroc.nabd.app"
+    link: "https://play.google.com/store/apps/details?id=com.news.maroc.nabd.app",
+    waitSeconds: 0
   },
   {
+    id: "spanish",
     img: "1795378783081.jpg",
     accent: "#c084fc",
     nameAr: "تعلم اللغة الإسبانية",
@@ -299,9 +327,47 @@ var APPS = [
     featuresEn: ["🗣️ Daily phrases", "📚 Core basics", "✨ Beginner friendly"],
     tagAr: "V1.0 • APK",
     tagEn: "V1.0 • APK",
-    link: "https://www.mediafire.com/file/sbc8x33dewsnog4/%25D8%25AA%25D8%25B9%25D9%2584%25D9%2585_%25D8%25A7%25D9%2584%25D9%2584%25D8%25BA%25D8%25A9_%25D8%25A7%25D9%2584%25D8%25A5%25D8%25B3%25D8%25A8%25D8%25A7%25D9%2586%25D9%258A%25D8%25A9.apk/file"
+    link: "https://www.mediafire.com/file/sbc8x33dewsnog4/%25D8%25AA%25D8%25B9%25D9%2584%25D9%2585_%25D8%25A7%25D9%2584%25D9%2584%25D8%25BA%25D8%25A9_%25D8%25A7%25D9%2584%25D8%25A5%25D8%25B3%25D8%25A8%25D8%25A7%25D9%2586%25D9%258A%25D8%25A9.apk/file",
+    waitSeconds: 0
   }
 ];
+
+function startTimedRedirect(appId, url, seconds) {
+  if (countdownTimer) {
+    clearInterval(countdownTimer);
+    countdownTimer = null;
+  }
+
+  var allBoxes = document.querySelectorAll(".timer-box");
+  for (var k = 0; k < allBoxes.length; k++) {
+    allBoxes[k].style.display = "none";
+  }
+
+  var box = document.getElementById("timer-" + appId);
+  var textEl = document.getElementById("timer-text-" + appId);
+  var badgeEl = document.getElementById("timer-badge-" + appId);
+  if (!box || !textEl || !badgeEl) return;
+
+  var left = seconds;
+  box.style.display = "flex";
+  textEl.textContent = isEn ? "Preparing your download link..." : "جاري تجهيز رابط التحميل...";
+  badgeEl.textContent = left + "s";
+
+  countdownTimer = setInterval(function() {
+    left--;
+    if (left > 0) {
+      badgeEl.textContent = left + "s";
+    } else {
+      clearInterval(countdownTimer);
+      countdownTimer = null;
+      badgeEl.textContent = "0s";
+      textEl.innerHTML = isEn
+        ? 'Ready! <a href="' + url + '" target="_blank" rel="noopener noreferrer" style="color:#38bdf8;text-decoration:underline;">Open Link</a>'
+        : 'جاهز! <a href="' + url + '" target="_blank" rel="noopener noreferrer" style="color:#38bdf8;text-decoration:underline;">افتح الرابط</a>';
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  }, 1000);
+}
 
 function toggleTheme() {
   isLight = !isLight;
@@ -319,6 +385,7 @@ function renderPage() {
     ? "linear-gradient(145deg, rgba(255,255,255,0.78), rgba(255,255,255,0.48))"
     : "linear-gradient(145deg, rgba(255,255,255,0.11), rgba(255,255,255,0.03))";
   var pillBg = isLight ? "rgba(15, 23, 42, 0.05)" : "rgba(255, 255, 255, 0.05)";
+  var timerBg = isLight ? "rgba(255, 255, 255, 0.65)" : "rgba(4, 6, 12, 0.48)";
   var borderCol = isLight ? "rgba(15, 23, 42, 0.12)" : "rgba(255, 255, 255, 0.14)";
   var textCol = isLight ? "#0f172a" : "#f8fafc";
   var mutedCol = isLight ? "#475569" : "#94a3b8";
@@ -384,6 +451,14 @@ function renderPage() {
     }
     featsHtml += '</div>';
 
+    var btnActionHtml = a.waitSeconds > 0
+      ? '<button type="button" class="dl-glass-btn" onclick="startTimedRedirect(\'' + a.id + '\', \'' + a.link + '\', ' + a.waitSeconds + ')" style="background:' + btnBg + ';color:' + btnText + ';border:1px solid ' + a.accent + '88;cursor:pointer;">' + btnLabel + '</button>' +
+        '<div id="timer-' + a.id + '" class="timer-box" style="background:' + timerBg + ';color:' + textCol + ';">' +
+          '<span id="timer-text-' + a.id + '"></span>' +
+          '<span id="timer-badge-' + a.id + '" class="timer-badge">10s</span>' +
+        '</div>'
+      : '<a class="dl-glass-btn" href="' + a.link + '" target="_blank" rel="noopener noreferrer" style="background:' + btnBg + ';color:' + btnText + ';border:1px solid ' + a.accent + '88;">' + btnLabel + '</a>';
+
     cardsHtml +=
       '<article class="app-card lux-glass" style="background:' + glassSurface + ';border-color:' + borderCol + ';">' +
         '<div class="app-head">' +
@@ -397,7 +472,7 @@ function renderPage() {
           '</div>' +
         '</div>' +
         featsHtml +
-        '<a class="dl-glass-btn" href="' + a.link + '" target="_blank" rel="noopener noreferrer" style="background:' + btnBg + ';color:' + btnText + ';border:1px solid ' + a.accent + '88;">' + btnLabel + '</a>' +
+        btnActionHtml +
       '</article>';
   }
   document.getElementById("appsContainer").innerHTML = cardsHtml;
