@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" style="background:#05070d;">
+<html lang="ar" style="background:#04060c;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="المنصة الرسمية لتحميل تطبيقات 7ou6ni للأندرويد بسرعة وأمان.">
+<meta name="description" content="المنصة الرسمية لتحميل تطبيقات 7ou6ni للأندرويد بتجربة أنيقة وسريعة.">
 <title>7ou6ni Apps</title>
 <style>
   * {
@@ -12,59 +12,70 @@
   html, body {
     margin: 0;
     padding: 0;
-    background-color: #05070d;
-    color: #f5f7fa;
+    background-color: #04060c;
+    color: #f8fafc;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, "Segoe UI", Roboto, Arial, sans-serif;
     -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
   }
-  .bg-glow {
+  .ambient-bg {
     position: fixed;
-    inset: 0;
+    inset: -10%;
     pointer-events: none;
     z-index: 0;
     background:
-      radial-gradient(circle at 15% 12%, rgba(56, 189, 248, 0.16), transparent 42%),
-      radial-gradient(circle at 85% 24%, rgba(168, 85, 247, 0.14), transparent 45%),
-      radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.10), transparent 45%);
+      radial-gradient(460px circle at 12% 16%, rgba(56, 189, 248, 0.24), transparent 60%),
+      radial-gradient(520px circle at 88% 22%, rgba(192, 132, 252, 0.22), transparent 62%),
+      radial-gradient(480px circle at 50% 88%, rgba(34, 197, 94, 0.16), transparent 60%);
+    animation: floatGlow 11s ease-in-out infinite alternate;
+  }
+  @keyframes floatGlow {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(0, -14px, 0) scale(1.03); }
   }
   .container {
     position: relative;
     z-index: 1;
-    max-width: 580px;
+    max-width: 560px;
     margin: 0 auto;
-    padding: 12px 12px 36px 12px;
+    padding: 12px 12px 38px 12px;
   }
-  .glass {
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border-radius: 18px;
+  .lux-glass {
+    position: relative;
+    border-radius: 22px;
+    backdrop-filter: blur(26px) saturate(165%);
+    -webkit-backdrop-filter: blur(26px) saturate(165%);
+    box-shadow:
+      0 18px 40px rgba(0, 0, 0, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.04);
   }
   .topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    padding: 11px 13px;
+    padding: 11px 14px;
     margin-bottom: 10px;
   }
   .brand-row {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
   }
   .brand-name {
     font-size: 15px;
     font-weight: 800;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.4px;
   }
   .badge-official {
     font-size: 9px;
     font-weight: 800;
-    padding: 2px 7px;
+    padding: 2px 8px;
     border-radius: 999px;
-    background: rgba(56, 189, 248, 0.16);
-    color: #38bdf8;
-    border: 1px solid rgba(56, 189, 248, 0.32);
+    background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.06));
+    border: 1px solid rgba(255,255,255,0.24);
+    letter-spacing: 0.5px;
   }
   .brand-sub {
     font-size: 11px;
@@ -76,32 +87,33 @@
     gap: 6px;
     flex-shrink: 0;
   }
-  .icon-btn, .lang-btn {
-    border: none;
+  .glass-btn {
+    border: 1px solid rgba(255, 255, 255, 0.18);
     cursor: pointer;
     font-weight: 700;
-    transition: transform 0.15s ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.15s ease, opacity 0.15s ease;
   }
-  .icon-btn:active, .lang-btn:active {
+  .glass-btn:active {
     transform: scale(0.95);
   }
   .icon-btn {
     width: 32px;
     height: 32px;
-    border-radius: 10px;
-    font-size: 14px;
+    border-radius: 11px;
+    font-size: 13.5px;
     display: grid;
     place-items: center;
   }
   .lang-btn {
     padding: 7px 11px;
-    border-radius: 10px;
+    border-radius: 11px;
     font-size: 11px;
-    background: rgba(56, 189, 248, 0.88);
-    color: #041019;
+    background: linear-gradient(135deg, rgba(255,255,255,0.24), rgba(255,255,255,0.08));
   }
   .hero {
-    padding: 12px 14px;
+    padding: 13px 14px;
     text-align: center;
     margin-bottom: 10px;
   }
@@ -116,21 +128,23 @@
     line-height: 1.5;
   }
   .app-card {
-    padding: 12px;
-    margin-bottom: 9px;
+    padding: 12px 13px;
+    margin-bottom: 10px;
+    overflow: hidden;
   }
   .app-head {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 11px;
     margin-bottom: 10px;
   }
   .app-icon {
     width: 44px;
     height: 44px;
-    border-radius: 12px;
+    border-radius: 13px;
     object-fit: cover;
     flex-shrink: 0;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
   }
   .app-meta {
     flex: 1;
@@ -150,27 +164,30 @@
   .app-tag {
     font-size: 9.5px;
     font-weight: 700;
-    padding: 2px 7px;
+    padding: 2px 8px;
     border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
   }
   .app-desc {
     font-size: 11.5px;
     line-height: 1.45;
     margin-top: 3px;
   }
-  .dl-btn {
+  .dl-glass-btn {
     display: block;
     width: 100%;
     text-align: center;
     text-decoration: none;
     padding: 8.5px 12px;
-    border-radius: 11px;
+    border-radius: 12px;
     font-size: 12px;
     font-weight: 800;
-    color: #050811;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 6px 18px rgba(0, 0, 0, 0.25);
   }
   .guide {
-    padding: 12px 13px;
+    padding: 12px 14px;
     margin-top: 10px;
   }
   .guide-title {
@@ -193,37 +210,37 @@
 </head>
 <body id="bodyEl" dir="rtl">
 
-<div class="bg-glow"></div>
+<div class="ambient-bg"></div>
 
 <div class="container">
-  <header id="hdrEl" class="topbar glass">
+  <header id="hdrEl" class="topbar lux-glass">
     <div>
       <div class="brand-row">
         <span id="titleEl" class="brand-name">7OU6NI APPS</span>
-        <span class="badge-official">OFFICIAL</span>
+        <span id="badgeEl" class="badge-official">OFFICIAL</span>
       </div>
       <div id="subEl" class="brand-sub">المنصة الرسمية لتحميل تطبيقات الأندرويد</div>
     </div>
     <div class="actions">
-      <button id="themeBtn" class="icon-btn" onclick="toggleTheme()" aria-label="Theme">☀️</button>
-      <button id="langBtn" class="lang-btn" onclick="toggleLang()">EN 🌐</button>
+      <button id="themeBtn" class="glass-btn icon-btn" onclick="toggleTheme()" aria-label="Theme">☀️</button>
+      <button id="langBtn" class="glass-btn lang-btn" onclick="toggleLang()">EN 🌐</button>
     </div>
   </header>
 
-  <section id="heroEl" class="hero glass">
+  <section id="heroEl" class="hero lux-glass">
     <div id="heroTitleEl" class="hero-title">حمّل تطبيقاتنا مباشرة على هاتفك</div>
     <p id="heroDescEl" class="hero-desc">تطبيقات مختارة بعناية بصيغة APK مباشرة أو عبر المتجر الرسمي.</p>
   </section>
 
   <main id="appsContainer"></main>
 
-  <section id="guideEl" class="guide glass">
+  <section id="guideEl" class="guide lux-glass">
     <b id="guideTitleEl" class="guide-title">📲 طريقة التثبيت على أندرويد:</b>
     <div id="guideBodyEl" class="guide-body"></div>
   </section>
 
   <footer id="footerEl" class="footer">
-    <span id="devLine">تطوير: 🧑‍💻 <b style="color:#38bdf8;">7ou6ni</b></span> • <span id="contactLabel">للتواصل:</span> <span dir="ltr">7ou6ni@bk.ru</span>
+    <span id="devLine">تطوير: 🧑‍💻 <b>7ou6ni</b></span> • <span id="contactLabel">للتواصل:</span> <span dir="ltr">7ou6ni@bk.ru</span>
   </footer>
 </div>
 
@@ -278,12 +295,13 @@ function toggleLang() {
 }
 
 function renderPage() {
-  var pageBg = isLight ? "#eef2f7" : "#05070d";
-  var glassBg = isLight ? "rgba(255, 255, 255, 0.72)" : "rgba(18, 24, 38, 0.62)";
-  var borderCol = isLight ? "rgba(15, 23, 42, 0.10)" : "rgba(255, 255, 255, 0.11)";
-  var textCol = isLight ? "#0f172a" : "#f5f7fa";
+  var pageBg = isLight ? "#e8eef5" : "#04060c";
+  var glassSurface = isLight
+    ? "linear-gradient(145deg, rgba(255,255,255,0.78), rgba(255,255,255,0.48))"
+    : "linear-gradient(145deg, rgba(255,255,255,0.11), rgba(255,255,255,0.03))";
+  var borderCol = isLight ? "rgba(15, 23, 42, 0.12)" : "rgba(255, 255, 255, 0.14)";
+  var textCol = isLight ? "#0f172a" : "#f8fafc";
   var mutedCol = isLight ? "#475569" : "#94a3b8";
-  var tagBg = isLight ? "rgba(15, 23, 42, 0.05)" : "rgba(255, 255, 255, 0.05)";
 
   document.documentElement.style.backgroundColor = pageBg;
   var body = document.getElementById("bodyEl");
@@ -292,10 +310,11 @@ function renderPage() {
   body.dir = isEn ? "ltr" : "rtl";
 
   var hdr = document.getElementById("hdrEl");
-  hdr.style.background = glassBg;
-  hdr.style.border = "1px solid " + borderCol;
+  hdr.style.background = glassSurface;
+  hdr.style.borderColor = borderCol;
 
   document.getElementById("titleEl").style.color = textCol;
+  document.getElementById("badgeEl").style.color = isLight ? "#0369a1" : "#e0f2fe";
   document.getElementById("subEl").style.color = mutedCol;
   document.getElementById("subEl").textContent = isEn
     ? "Official Android Apps Hub"
@@ -303,18 +322,21 @@ function renderPage() {
 
   var tBtn = document.getElementById("themeBtn");
   tBtn.textContent = isLight ? "🌙" : "☀️";
-  tBtn.style.background = isLight ? "rgba(15, 23, 42, 0.06)" : "rgba(255, 255, 255, 0.08)";
-  tBtn.style.color = isLight ? "#0f172a" : "#fbbf24";
-  tBtn.style.border = "1px solid " + borderCol;
+  tBtn.style.background = isLight ? "rgba(255,255,255,0.65)" : "rgba(255,255,255,0.08)";
+  tBtn.style.color = isLight ? "#0f172a" : "#fde047";
+  tBtn.style.borderColor = borderCol;
 
-  document.getElementById("langBtn").textContent = isEn ? "AR 🌐" : "EN 🌐";
+  var lBtn = document.getElementById("langBtn");
+  lBtn.textContent = isEn ? "AR 🌐" : "EN 🌐";
+  lBtn.style.color = textCol;
+  lBtn.style.borderColor = borderCol;
 
   var hero = document.getElementById("heroEl");
-  hero.style.background = glassBg;
-  hero.style.border = "1px solid " + borderCol;
+  hero.style.background = glassSurface;
+  hero.style.borderColor = borderCol;
 
   var hTitle = document.getElementById("heroTitleEl");
-  hTitle.style.color = isLight ? "#0284c7" : "#38bdf8";
+  hTitle.style.color = isLight ? "#0284c7" : "#7dd3fc";
   hTitle.textContent = isEn ? "Download Our Apps Directly" : "حمّل تطبيقاتنا مباشرة على هاتفك";
 
   var hDesc = document.getElementById("heroDescEl");
@@ -328,31 +350,36 @@ function renderPage() {
     var a = APPS[i];
     var name = isEn ? a.nameEn : a.nameAr;
     var desc = isEn ? a.descEn : a.descAr;
+    var tag = isEn ? a.tagEn : a.tagAr;
     var btnLabel = isEn ? "Download ⬇️" : "تحميل التطبيق ⬇️";
+    var btnBg = isLight
+      ? "linear-gradient(135deg, " + a.accent + "d9, " + a.accent + "99)"
+      : "linear-gradient(135deg, " + a.accent + "45, " + a.accent + "1f)";
+    var btnText = isLight ? "#041019" : "#ffffff";
 
     cardsHtml +=
-      '<article class="app-card glass" style="background:' + glassBg + ';border:1px solid ' + borderCol + ';">' +
+      '<article class="app-card lux-glass" style="background:' + glassSurface + ';border-color:' + borderCol + ';">' +
         '<div class="app-head">' +
-          '<img class="app-icon" src="' + a.img + '" alt="' + name + '" style="border:1px solid ' + a.accent + '80;background:' + a.accent + '18;">' +
+          '<img class="app-icon" src="' + a.img + '" alt="' + name + '" style="border:1px solid ' + a.accent + '88;background:' + a.accent + '20;">' +
           '<div class="app-meta">' +
             '<div class="app-title-row">' +
               '<span class="app-title" style="color:' + textCol + ';">' + name + '</span>' +
-              '<span class="app-tag" style="background:' + tagBg + ';color:' + a.accent + ';border:1px solid ' + a.accent + '40;">' + a.tagAr + '</span>' +
+              '<span class="app-tag" style="background:rgba(255,255,255,0.06);color:' + a.accent + ';border-color:' + a.accent + '55;">' + tag + '</span>' +
             '</div>' +
             '<div class="app-desc" style="color:' + mutedCol + ';">' + desc + '</div>' +
           '</div>' +
         '</div>' +
-        '<a class="dl-btn" href="' + a.link + '" target="_blank" rel="noopener noreferrer" style="background:' + a.accent + ';">' + btnLabel + '</a>' +
+        '<a class="dl-glass-btn" href="' + a.link + '" target="_blank" rel="noopener noreferrer" style="background:' + btnBg + ';color:' + btnText + ';border:1px solid ' + a.accent + '88;">' + btnLabel + '</a>' +
       '</article>';
   }
   document.getElementById("appsContainer").innerHTML = cardsHtml;
 
   var guide = document.getElementById("guideEl");
-  guide.style.background = glassBg;
-  guide.style.border = "1px solid " + borderCol;
+  guide.style.background = glassSurface;
+  guide.style.borderColor = borderCol;
 
   var gTitle = document.getElementById("guideTitleEl");
-  gTitle.style.color = isLight ? "#d97706" : "#fbbf24";
+  gTitle.style.color = isLight ? "#b45309" : "#fde047";
   gTitle.textContent = isEn ? "📲 How to Install on Android:" : "📲 طريقة التثبيت على أندرويد:";
 
   var gBody = document.getElementById("guideBodyEl");
