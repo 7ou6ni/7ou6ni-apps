@@ -1,135 +1,134 @@
 <!DOCTYPE html>
-<html lang="ar" style="background:#060911;">
+<html lang="ar" style="background:#05070d;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="المنصة الرسمية لتحميل تطبيقات 7ou6ni للأندرويد بسرعة وأمان.">
-<title>7ou6ni Apps — متجر تطبيقات الأندرويد</title>
+<title>7ou6ni Apps</title>
 <style>
-  :root {
-    --bg: #060911;
-    --card: #0e1424;
-    --card-2: #131b30;
-    --border: rgba(255, 255, 255, 0.08);
-    --text: #f8fafc;
-    --muted: #94a3b8;
-  }
   * {
     box-sizing: border-box;
   }
   html, body {
     margin: 0;
     padding: 0;
-    background-color: #060911;
-    color: #f8fafc;
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: #05070d;
+    color: #f5f7fa;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, "Segoe UI", Roboto, Arial, sans-serif;
     -webkit-tap-highlight-color: transparent;
   }
+  .bg-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(circle at 15% 12%, rgba(56, 189, 248, 0.16), transparent 42%),
+      radial-gradient(circle at 85% 24%, rgba(168, 85, 247, 0.14), transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(16, 185, 129, 0.10), transparent 45%);
+  }
   .container {
-    max-width: 720px;
+    position: relative;
+    z-index: 1;
+    max-width: 580px;
     margin: 0 auto;
-    padding: 16px 14px 48px 14px;
+    padding: 12px 12px 36px 12px;
+  }
+  .glass {
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 18px;
   }
   .topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    padding: 14px 16px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #121a2f 0%, #0b101d 100%);
-    border: 1px solid rgba(56, 189, 248, 0.22);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-    margin-bottom: 14px;
+    gap: 10px;
+    padding: 11px 13px;
+    margin-bottom: 10px;
   }
   .brand-row {
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
+    gap: 6px;
   }
   .brand-name {
-    font-size: 18px;
-    font-weight: 900;
-    letter-spacing: 0.4px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
   }
   .badge-official {
-    font-size: 10px;
-    font-weight: 900;
-    padding: 3px 8px;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 2px 7px;
     border-radius: 999px;
-    background: rgba(0, 229, 255, 0.16);
-    color: #00e5ff;
-    border: 1px solid rgba(0, 229, 255, 0.35);
+    background: rgba(56, 189, 248, 0.16);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.32);
   }
   .brand-sub {
-    font-size: 12px;
-    margin-top: 3px;
+    font-size: 11px;
+    margin-top: 2px;
   }
   .actions {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     flex-shrink: 0;
   }
   .icon-btn, .lang-btn {
     border: none;
     cursor: pointer;
-    font-weight: 800;
-    transition: transform 0.15s ease, opacity 0.15s ease;
+    font-weight: 700;
+    transition: transform 0.15s ease;
   }
   .icon-btn:active, .lang-btn:active {
     transform: scale(0.95);
   }
   .icon-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    font-size: 14px;
     display: grid;
     place-items: center;
   }
   .lang-btn {
-    padding: 9px 13px;
-    border-radius: 12px;
-    font-size: 12px;
-    background: linear-gradient(135deg, #00e5ff, #38bdf8);
-    color: #050811;
+    padding: 7px 11px;
+    border-radius: 10px;
+    font-size: 11px;
+    background: rgba(56, 189, 248, 0.88);
+    color: #041019;
   }
   .hero {
-    border-radius: 20px;
-    padding: 18px 16px;
+    padding: 12px 14px;
     text-align: center;
-    margin-bottom: 16px;
-    border: 1px solid var(--border);
+    margin-bottom: 10px;
   }
   .hero-title {
-    font-size: 17px;
-    font-weight: 900;
-    margin-bottom: 6px;
+    font-size: 14.5px;
+    font-weight: 800;
+    margin-bottom: 3px;
   }
   .hero-desc {
     margin: 0;
-    font-size: 13px;
-    line-height: 1.65;
+    font-size: 11.5px;
+    line-height: 1.5;
   }
   .app-card {
-    border-radius: 20px;
-    padding: 16px;
-    margin-bottom: 13px;
-    border: 1px solid var(--border);
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    padding: 12px;
+    margin-bottom: 9px;
   }
   .app-head {
     display: flex;
     align-items: center;
-    gap: 13px;
-    margin-bottom: 12px;
+    gap: 10px;
+    margin-bottom: 10px;
   }
   .app-icon {
-    width: 58px;
-    height: 58px;
-    border-radius: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
     object-fit: cover;
     flex-shrink: 0;
   }
@@ -141,64 +140,63 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
   }
   .app-title {
-    font-size: 16px;
-    font-weight: 900;
+    font-size: 13.5px;
+    font-weight: 800;
   }
   .app-tag {
-    font-size: 11px;
-    font-weight: 800;
-    padding: 3px 9px;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 7px;
     border-radius: 999px;
   }
   .app-desc {
-    font-size: 12.5px;
-    line-height: 1.55;
-    margin-top: 5px;
+    font-size: 11.5px;
+    line-height: 1.45;
+    margin-top: 3px;
   }
   .dl-btn {
     display: block;
     width: 100%;
     text-align: center;
     text-decoration: none;
-    padding: 11px 14px;
-    border-radius: 13px;
-    font-size: 13.5px;
-    font-weight: 900;
+    padding: 8.5px 12px;
+    border-radius: 11px;
+    font-size: 12px;
+    font-weight: 800;
     color: #050811;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
   }
   .guide {
-    border-radius: 20px;
-    padding: 16px;
-    margin-top: 16px;
-    border: 1px solid var(--border);
+    padding: 12px 13px;
+    margin-top: 10px;
   }
   .guide-title {
-    font-size: 14px;
-    font-weight: 900;
-    margin-bottom: 8px;
+    font-size: 12.5px;
+    font-weight: 800;
+    margin-bottom: 5px;
     display: block;
   }
   .guide-body {
-    font-size: 12.5px;
-    line-height: 1.8;
+    font-size: 11.5px;
+    line-height: 1.65;
   }
   .footer {
     text-align: center;
-    margin-top: 20px;
-    font-size: 12px;
-    line-height: 1.8;
+    margin-top: 14px;
+    font-size: 11px;
+    line-height: 1.7;
   }
 </style>
 </head>
 <body id="bodyEl" dir="rtl">
 
+<div class="bg-glow"></div>
+
 <div class="container">
-  <header id="hdrEl" class="topbar">
+  <header id="hdrEl" class="topbar glass">
     <div>
       <div class="brand-row">
         <span id="titleEl" class="brand-name">7OU6NI APPS</span>
@@ -212,20 +210,20 @@
     </div>
   </header>
 
-  <section id="heroEl" class="hero">
+  <section id="heroEl" class="hero glass">
     <div id="heroTitleEl" class="hero-title">حمّل تطبيقاتنا مباشرة على هاتفك</div>
     <p id="heroDescEl" class="hero-desc">تطبيقات مختارة بعناية بصيغة APK مباشرة أو عبر المتجر الرسمي.</p>
   </section>
 
   <main id="appsContainer"></main>
 
-  <section id="guideEl" class="guide">
+  <section id="guideEl" class="guide glass">
     <b id="guideTitleEl" class="guide-title">📲 طريقة التثبيت على أندرويد:</b>
     <div id="guideBodyEl" class="guide-body"></div>
   </section>
 
   <footer id="footerEl" class="footer">
-    تطوير <b style="color:#00e5ff;">7ou6ni</b> • للتواصل: <span dir="ltr">7ou6ni@bk.ru</span>
+    <span id="devLine">تطوير: 🧑‍💻 <b style="color:#38bdf8;">7ou6ni</b></span> • <span id="contactLabel">للتواصل:</span> <span dir="ltr">7ou6ni@bk.ru</span>
   </footer>
 </div>
 
@@ -236,13 +234,13 @@ var isLight = false;
 var APPS = [
   {
     img: "app_icon_512x512-1.png",
-    accent: "#00e5ff",
+    accent: "#38bdf8",
     nameAr: "Pro Sensi DPI",
     nameEn: "Pro Sensi DPI",
     descAr: "حاسبة الحساسية وإعدادات الـ DPI ونصائح الهيدشوت لأكثر من 100 هاتف.",
     descEn: "Sensitivity & DPI calculator with headshot tips for 100+ devices.",
-    tagAr: "V3.0 • APK مباشر",
-    tagEn: "V3.0 • Direct APK",
+    tagAr: "V3.0 • APK",
+    tagEn: "V3.0 • APK",
     link: "https://www.mediafire.com/file/8hiafjb8w2s1ork/Pro_Sensi_DPI.apk/file"
   },
   {
@@ -252,8 +250,8 @@ var APPS = [
     nameEn: "Arab & World News - Breaking",
     descAr: "متابعة مستمرة وسريعة لأهم الأخبار العربية والعالمية العاجلة لحظة بلحظة.",
     descEn: "Fast and organized breaking Arab and world news updates.",
-    tagAr: "Google Play • رسمي",
-    tagEn: "Google Play • Official",
+    tagAr: "Google Play",
+    tagEn: "Google Play",
     link: "https://play.google.com/store/apps/details?id=com.news.maroc.nabd.app"
   },
   {
@@ -263,8 +261,8 @@ var APPS = [
     nameEn: "Learn Spanish",
     descAr: "تعلّم أساسيات اللغة الإسبانية والعبارات اليومية بأسلوب بسيط ومباشر.",
     descEn: "Learn Spanish essentials and everyday phrases simply.",
-    tagAr: "V1.0 • APK مباشر",
-    tagEn: "V1.0 • Direct APK",
+    tagAr: "V1.0 • APK",
+    tagEn: "V1.0 • APK",
     link: "https://www.mediafire.com/file/sbc8x33dewsnog4/%25D8%25AA%25D8%25B9%25D9%2584%25D9%2585_%25D8%25A7%25D9%2584%25D9%2584%25D8%25BA%25D8%25A9_%25D8%25A7%25D9%2584%25D8%25A5%25D8%25B3%25D8%25A8%25D8%25A7%25D9%2586%25D9%258A%25D8%25A9.apk/file"
   }
 ];
@@ -280,12 +278,12 @@ function toggleLang() {
 }
 
 function renderPage() {
-  var pageBg = isLight ? "#f1f5f9" : "#060911";
-  var cardBg = isLight ? "#ffffff" : "#0e1424";
-  var borderCol = isLight ? "#cbd5e1" : "rgba(255,255,255,0.08)";
-  var textCol = isLight ? "#0f172a" : "#f8fafc";
+  var pageBg = isLight ? "#eef2f7" : "#05070d";
+  var glassBg = isLight ? "rgba(255, 255, 255, 0.72)" : "rgba(18, 24, 38, 0.62)";
+  var borderCol = isLight ? "rgba(15, 23, 42, 0.10)" : "rgba(255, 255, 255, 0.11)";
+  var textCol = isLight ? "#0f172a" : "#f5f7fa";
   var mutedCol = isLight ? "#475569" : "#94a3b8";
-  var tagBg = isLight ? "#f1f5f9" : "#070b14";
+  var tagBg = isLight ? "rgba(15, 23, 42, 0.05)" : "rgba(255, 255, 255, 0.05)";
 
   document.documentElement.style.backgroundColor = pageBg;
   var body = document.getElementById("bodyEl");
@@ -294,10 +292,8 @@ function renderPage() {
   body.dir = isEn ? "ltr" : "rtl";
 
   var hdr = document.getElementById("hdrEl");
-  hdr.style.background = isLight
-    ? "#ffffff"
-    : "linear-gradient(135deg, #121a2f 0%, #0b101d 100%)";
-  hdr.style.borderColor = isLight ? "#cbd5e1" : "rgba(56, 189, 248, 0.22)";
+  hdr.style.background = glassBg;
+  hdr.style.border = "1px solid " + borderCol;
 
   document.getElementById("titleEl").style.color = textCol;
   document.getElementById("subEl").style.color = mutedCol;
@@ -307,18 +303,18 @@ function renderPage() {
 
   var tBtn = document.getElementById("themeBtn");
   tBtn.textContent = isLight ? "🌙" : "☀️";
-  tBtn.style.background = isLight ? "#f1f5f9" : "#111827";
+  tBtn.style.background = isLight ? "rgba(15, 23, 42, 0.06)" : "rgba(255, 255, 255, 0.08)";
   tBtn.style.color = isLight ? "#0f172a" : "#fbbf24";
   tBtn.style.border = "1px solid " + borderCol;
 
   document.getElementById("langBtn").textContent = isEn ? "AR 🌐" : "EN 🌐";
 
   var hero = document.getElementById("heroEl");
-  hero.style.background = cardBg;
-  hero.style.borderColor = borderCol;
+  hero.style.background = glassBg;
+  hero.style.border = "1px solid " + borderCol;
 
   var hTitle = document.getElementById("heroTitleEl");
-  hTitle.style.color = isLight ? "#0284c7" : "#00e5ff";
+  hTitle.style.color = isLight ? "#0284c7" : "#38bdf8";
   hTitle.textContent = isEn ? "Download Our Apps Directly" : "حمّل تطبيقاتنا مباشرة على هاتفك";
 
   var hDesc = document.getElementById("heroDescEl");
@@ -332,17 +328,16 @@ function renderPage() {
     var a = APPS[i];
     var name = isEn ? a.nameEn : a.nameAr;
     var desc = isEn ? a.descEn : a.descAr;
-    var tag = isEn ? a.tagEn : a.tagAr;
-    var btnLabel = isEn ? "Download App ⬇️" : "تحميل التطبيق ⬇️";
+    var btnLabel = isEn ? "Download ⬇️" : "تحميل التطبيق ⬇️";
 
     cardsHtml +=
-      '<article class="app-card" style="background:' + cardBg + ';border-color:' + borderCol + ';">' +
+      '<article class="app-card glass" style="background:' + glassBg + ';border:1px solid ' + borderCol + ';">' +
         '<div class="app-head">' +
-          '<img class="app-icon" src="' + a.img + '" alt="' + name + '" style="border:1.5px solid ' + a.accent + '88;background:' + a.accent + '18;">' +
+          '<img class="app-icon" src="' + a.img + '" alt="' + name + '" style="border:1px solid ' + a.accent + '80;background:' + a.accent + '18;">' +
           '<div class="app-meta">' +
             '<div class="app-title-row">' +
               '<span class="app-title" style="color:' + textCol + ';">' + name + '</span>' +
-              '<span class="app-tag" style="background:' + tagBg + ';color:' + a.accent + ';border:1px solid ' + a.accent + '44;">' + tag + '</span>' +
+              '<span class="app-tag" style="background:' + tagBg + ';color:' + a.accent + ';border:1px solid ' + a.accent + '40;">' + a.tagAr + '</span>' +
             '</div>' +
             '<div class="app-desc" style="color:' + mutedCol + ';">' + desc + '</div>' +
           '</div>' +
@@ -353,8 +348,8 @@ function renderPage() {
   document.getElementById("appsContainer").innerHTML = cardsHtml;
 
   var guide = document.getElementById("guideEl");
-  guide.style.background = cardBg;
-  guide.style.borderColor = borderCol;
+  guide.style.background = glassBg;
+  guide.style.border = "1px solid " + borderCol;
 
   var gTitle = document.getElementById("guideTitleEl");
   gTitle.style.color = isLight ? "#d97706" : "#fbbf24";
@@ -363,9 +358,13 @@ function renderPage() {
   var gBody = document.getElementById("guideBodyEl");
   gBody.style.color = textCol;
   gBody.innerHTML = isEn
-    ? "1. Tap <b>Download App</b> on the card you want.<br>2. Open the downloaded <b>APK</b> file from notifications or Files.<br>3. Allow <b>Install from this source</b> if asked, then tap <b>Install</b>."
+    ? "1. Tap <b>Download</b> on the app card.<br>2. Open the <b>APK</b> file from notifications or Files.<br>3. Allow <b>Install from this source</b> if prompted, then tap <b>Install</b>."
     : "1. اضغط على زر <b>تحميل التطبيق</b> في البطاقة المطلوبة.<br>2. افتح ملف <b>APK</b> بعد التنزيل من الإشعارات أو مدير الملفات.<br>3. إذا طُلب منك، فعّل <b>السماح من هذا المصدر</b> ثم اضغط <b>تثبيت</b>.";
 
+  document.getElementById("devLine").innerHTML = isEn
+    ? 'Developer: 🧑‍💻 <b style="color:#38bdf8;">7ou6ni</b>'
+    : 'تطوير: 🧑‍💻 <b style="color:#38bdf8;">7ou6ni</b>';
+  document.getElementById("contactLabel").textContent = isEn ? "Contact:" : "للتواصل:";
   document.getElementById("footerEl").style.color = mutedCol;
 }
 
